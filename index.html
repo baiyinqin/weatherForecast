@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div class="wrap" id="app">
+    <div class="search_form">
+        <div class="logo"><img src="img/logo.png" alt=""></div>
+        <div class="form_group">
+            <input v-model="city" @keyup.enter="searchWeather" type="text" class="input_txt" placeholder="请输入查询的天气">
+            <button @click="searchWeather" class="input_sub">
+                搜 索
+            </button>
+        </div>
+        <div class="hotkey">
+            <a href="javascript:;" @click="changeCity('北京')">北京</a>
+            <a href="javascript:;" @click="changeCity('上海')">上海</a>
+        </div>
+    </div>
+    <ul class="weather_list">
+        <li v-for="item in weatherList">
+            <div class="info_type">
+                <span class="iconfont">{{item.type}}</span>
+            </div>
+            <div class="info_temp">
+                <b>{{item.low}}</b>
+                ~
+                <b>{{item.high}}</b>
+            </div>
+            <div class="info_date">
+                <span>{{item.date}}</span>
+            </div>
+        </li>
+    </ul>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>
